@@ -1,20 +1,27 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
-[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/Wind.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Root.gd" type="Script" id=2]
 [ext_resource path="res://tileset.png" type="Texture" id=3]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=4]
 
+[sub_resource type="RectangleShape2D" id=17]
+extents = Vector2( 16.0567, 16.0979 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 64, 64 )
+
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 1 ) ],
+"frames": [ SubResource( 16 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 30, 30 )
+extents = Vector2( 32, 31.5 )
 
 [sub_resource type="ConvexPolygonShape2D" id=14]
 points = PoolVector2Array( 64, 32, 0, 32, 0, 0, 64, 0 )
@@ -264,12 +271,33 @@ points = PoolVector2Array( 0, 32, 0, 32, 64, 32, 0, 64 )
 script = ExtResource( 2 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
+visible = false
 position = Vector2( 363, -517 )
 current = true
 zoom = Vector2( 2.5, 2.5 )
 
+[node name="Wind" type="Area2D" parent="."]
+modulate = Color( 1, 1, 1, 0.705882 )
+position = Vector2( 280, -352 )
+scale = Vector2( 9.7156, 9.93918 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wind"]
+shape = SubResource( 17 )
+
+[node name="Polygon2D" type="Polygon2D" parent="Wind/CollisionShape2D"]
+position = Vector2( 16.0567, 0.804893 )
+texture_offset = Vector2( 0.067, 60 )
+polygon = PoolVector2Array( -32, -17, 0, -17, 0, 15, -32, 15 )
+
+[node name="Polygon2D" type="Polygon2D" parent="Wind/CollisionShape2D/Polygon2D"]
+polygon = PoolVector2Array( -15.645, -16.9028, -23.0557, -8.85384, -8.23419, -8.85384 )
+
 [node name="Player" type="KinematicBody2D" parent="."]
-position = Vector2( -8, -159 )
+position = Vector2( 1056, -96 )
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_group_": true
@@ -281,11 +309,14 @@ jump_a = -900.0
 gravity_a = 25.0
 glide_f = 0.9
 glide_jump_a = -750.0
+wind_a = -60.0
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Player"]
+modulate = Color( 0, 0, 0, 1 )
 frames = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2( 0, 0.5 )
 shape = SubResource( 2 )
 
 [node name="Leaves" type="TileMap" parent="."]
@@ -309,3 +340,7 @@ format = 1
 __meta__ = {
 "_edit_lock_": true
 }
+
+[connection signal="body_entered" from="Wind" to="Wind" method="_on_Wind_body_entered"]
+[connection signal="body_exited" from="Wind" to="Player" method="_on_Wind_body_exited"]
+[connection signal="entered_wind" from="Wind" to="Player" method="_on_Wind_entered_wind"]
