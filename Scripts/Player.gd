@@ -15,7 +15,7 @@ var velocity = Vector2.ZERO
 var state = "fall"
 var glide_jumped = false
 var wind_angles = 0
-var in_wind = false
+var in_wind = 0
 
 
 func _physics_process(delta : float):
@@ -45,7 +45,7 @@ func _physics_process(delta : float):
 			state = "glide_jump"
 		if is_on_floor():
 			state = "ground"
-		if in_wind:
+		if in_wind > 0:
 			state = "wind"
 			
 	elif state == "glide_jump":
@@ -55,7 +55,7 @@ func _physics_process(delta : float):
 			state = "fall"
 	
 	elif state == "wind":
-		if not in_wind:
+		if in_wind == 0:
 			state = "glide"
 		if Input.is_action_just_pressed("down"):
 			state = "fall"
@@ -81,7 +81,9 @@ func _physics_process(delta : float):
 		if velocity.y > 0:
 			velocity.y *= glide_f
 	if state == "wind":
-		acceleration.y += wind_a
+		var final_wind_a = Vector2(0, wind_a).rotated(wind_angles)
+		final_wind_a.x *= 2
+		acceleration += final_wind_a
 	if state == "glide_jump":
 		if Input.is_action_just_pressed("up") and not glide_jumped:
 			velocity.y = 0
@@ -96,8 +98,8 @@ func _physics_process(delta : float):
 
 func _on_Wind_entered_wind(angles):
 	wind_angles = angles
-	in_wind = true
+	in_wind += 1
 
 
 func _on_Wind_body_exited(body):
-	in_wind = false
+	in_wind -= 1

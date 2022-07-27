@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/Wind.gd" type="Script" id=1]
+
+[sub_resource type="RectangleShape2D" id=17]
+extents = Vector2( 32, 32 )
+
+[node name="Wind" type="Area2D"]
+modulate = Color( 1, 1, 1, 0.705882 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -4.76837e-07, 0 )
+shape = SubResource( 17 )
+
+[node name="Polygon2D" type="Polygon2D" parent="CollisionShape2D"]
+position = Vector2( 32.1701, 1.58918 )
+scale = Vector2( 2, 2 )
+antialiased = true
+polygon = PoolVector2Array( -32.085, -16.7559, -0.0850487, -16.7559, -0.0850487, 15.2441, -32.085, 15.2441 )
+
+[node name="Polygon2D" type="Polygon2D" parent="CollisionShape2D/Polygon2D"]
+polygon = PoolVector2Array( -16.0567, -16.8049, -24.0567, -8.80489, -8.0567, -8.80489 )
+
+[connection signal="body_entered" from="." to="." method="_on_Wind_body_entered"]
