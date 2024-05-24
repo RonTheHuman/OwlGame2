@@ -9,4 +9,6 @@ func _process(delta):
 	if Input.is_action_just_pressed("pause"):
 		add_child(preload("res://Scenes/PauseMenu.tscn").instantiate())
 		get_tree().paused = true
+
+func _physics_process(delta):
 	$Camera2D.translate($Player.position - $Camera2D.position)

@@ -2,7 +2,7 @@ extends Control
 
 
 func _ready():
-	pass
+	get_tree().paused = false
 
 
 func _on_StartButton_pressed():
@@ -10,4 +10,5 @@ func _on_StartButton_pressed():
 
 
 func _on_ExitButton_pressed():
+	print("aaa")
 	get_tree().quit()
