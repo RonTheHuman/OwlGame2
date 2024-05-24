@@ -1,82 +1,82 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Atkinson_Hyperlegible.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Atkinson_Hyperlegible.tres" type="FontFile" id=1]
 [ext_resource path="res://Scripts/PauseMenu.gd" type="Script" id=2]
 
 [node name="CanvasLayer" type="CanvasLayer"]
-pause_mode = 2
+process_mode = 3
 script = ExtResource( 2 )
 
 [node name="Panel" type="Panel" parent="."]
 modulate = Color( 1, 1, 1, 0.592157 )
-margin_right = 1024.0
-margin_bottom = 600.0
+offset_right = 1366.0
+offset_bottom = 770.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -157.0
-margin_top = -149.5
-margin_right = 157.0
-margin_bottom = 149.5
-custom_constants/separation = 60
+offset_left = -157.0
+offset_top = -149.5
+offset_right = 157.0
+offset_bottom = 149.5
+theme_override_constants/separation = 60
 
 [node name="ResumeButton" type="Button" parent="VBoxContainer"]
-margin_right = 314.0
-margin_bottom = 60.0
-custom_fonts/font = ExtResource( 1 )
+offset_right = 314.0
+offset_bottom = 60.0
+theme_override_fonts/font = ExtResource( 1 )
 keep_pressed_outside = true
 text = "Resume"
 
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
-margin_top = 120.0
-margin_right = 314.0
-margin_bottom = 180.0
-custom_fonts/font = ExtResource( 1 )
+offset_top = 120.0
+offset_right = 314.0
+offset_bottom = 180.0
+theme_override_fonts/font = ExtResource( 1 )
 keep_pressed_outside = true
 text = "Save and Quit"
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 240.0
-margin_right = 314.0
-margin_bottom = 280.0
+offset_top = 240.0
+offset_right = 314.0
+offset_bottom = 280.0
 size_flags_horizontal = 4
-custom_constants/separation = 70
+theme_override_constants/separation = 70
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer3"]
-margin_right = 118.0
-margin_bottom = 40.0
+offset_right = 118.0
+offset_bottom = 40.0
 size_flags_horizontal = 4
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer3/HBoxContainer"]
-margin_top = 13.0
-margin_right = 38.0
-margin_bottom = 27.0
+offset_top = 13.0
+offset_right = 38.0
+offset_bottom = 27.0
 text = "Music"
 
 [node name="MusicCheck" type="CheckButton" parent="VBoxContainer/HBoxContainer3/HBoxContainer"]
-margin_left = 42.0
-margin_right = 118.0
-margin_bottom = 40.0
+offset_left = 42.0
+offset_right = 118.0
+offset_bottom = 40.0
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/HBoxContainer3"]
-margin_left = 188.0
-margin_right = 314.0
-margin_bottom = 40.0
+offset_left = 188.0
+offset_right = 314.0
+offset_bottom = 40.0
 size_flags_horizontal = 4
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer3/HBoxContainer2"]
-margin_top = 13.0
-margin_right = 46.0
-margin_bottom = 27.0
+offset_top = 13.0
+offset_right = 46.0
+offset_bottom = 27.0
 text = "Sounds"
 
 [node name="SoundCheck" type="CheckButton" parent="VBoxContainer/HBoxContainer3/HBoxContainer2"]
-margin_left = 50.0
-margin_right = 126.0
-margin_bottom = 40.0
+offset_left = 50.0
+offset_right = 126.0
+offset_bottom = 40.0
 
 [connection signal="pressed" from="VBoxContainer/ResumeButton" to="." method="_on_ResumeButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
