@@ -7,4 +7,5 @@ func _ready():
 	connect("body_exited", Callable(get_node("../../Player"), "_on_Wind_body_exited"))
 
 func _on_Wind_body_entered(body):
+	print(global_position)
 	emit_signal("entered_wind", rotation_degrees)

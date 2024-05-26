@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ve2uk4fxg10p"]
+[gd_scene load_steps=12 format=3 uid="uid://ve2uk4fxg10p"]
 
 [ext_resource type="Texture2D" uid="uid://8neltjsl635d" path="res://tileset.png" id="1"]
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="2"]
@@ -6,6 +6,14 @@
 [sub_resource type="AtlasTexture" id="AtlasTexture_kiq0s"]
 atlas = ExtResource("1")
 region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xtwk5"]
+atlas = ExtResource("1")
+region = Rect2(384, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3wtx4"]
+atlas = ExtResource("1")
+region = Rect2(384, 64, 128, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x281s"]
 atlas = ExtResource("1")
@@ -24,6 +32,17 @@ animations = [{
 "loop": true,
 "name": &"crouch",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xtwk5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3wtx4")
+}],
+"loop": true,
+"name": &"flap",
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -59,15 +78,19 @@ ground_f = 0.7
 jump_a = -900.0
 gravity_a = 50.0
 air_f = 0.9
-glide_a = 30.0
-max_glide_v = 700.0
-fly_v = 9.0
+glide_a = 20.0
+max_glide_v = 500.0
+fly_v = 500.0
 wind_a = -60.0
 direction_change_s = 0.4
+coyote_time = 10.0
+fly_time = 30.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_6cjex")
-animation = &"walk"
+animation = &"flap"
+autoplay = "walk"
+frame_progress = 0.270442
 
 [node name="StandingCollision2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)
