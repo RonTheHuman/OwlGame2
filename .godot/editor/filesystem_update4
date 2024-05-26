@@ -1,10 +1,8 @@
 res://default_env.tres
 res://Scenes/Root.tscn
 res://Atkinson_Hyperlegible.tres
+res://Scripts/Player.gd
 res://Scenes/Player.tscn
 res://Scenes/Wind.tscn
-res://Scripts/Player.gd
-res://Scripts/PauseMenu.gd
 res://Scenes/StartMenu.tscn
-res://Scripts/StartMenu.gd
 res://Scripts/Root.gd

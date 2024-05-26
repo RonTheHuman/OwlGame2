@@ -52,14 +52,16 @@ size = Vector2(24, 31)
 size = Vector2(45.5, 31)
 
 [node name="Player" type="CharacterBody2D"]
+z_index = 2
 script = ExtResource("2")
-walk_a = 100.0
-walk_f = 0.8
-walk_v = 7.0
+walk_v = 420.0
+ground_f = 0.7
 jump_a = -900.0
-gravity_a = 25.0
-glide_f = 0.9
-glide_jump_a = -750.0
+gravity_a = 50.0
+air_f = 0.9
+glide_a = 30.0
+max_glide_v = 700.0
+fly_v = 9.0
 wind_a = -60.0
 direction_change_s = 0.4
 

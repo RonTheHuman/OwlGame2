@@ -7,6 +7,7 @@ func _ready():
 
 func _process(delta):
 	if Input.is_action_just_pressed("pause"):
+		get_tree().quit()
 		add_child(preload("res://Scenes/PauseMenu.tscn").instantiate())
 		get_tree().paused = true
 
