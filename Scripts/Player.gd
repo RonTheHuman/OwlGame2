@@ -5,25 +5,26 @@ extends CharacterBody2D
 @export var ground_f : float
 @export var jump_a : float
 @export var gravity_a : float
-@export var air_f : float
+
+@export var v_air_f : float
 @export var glide_a : float
 @export var max_glide_v : float
+
 @export var fly_v : float
 @export var wind_a : float
-@export var direction_change_s : float
-@export var coyote_time : float
-@export var fly_time : float
+
+@export var coyote_frames : float
+@export var fly_frames : float
+
+var gliding = false
+var jumps = 1
+var wind_angles = 0
+var in_wind = 0
 
 var was_on_floor = false
 var coyote_count = 0
 var fly_count = 0
-var gliding = false
-var jumps = 1
-var fly_jumps = 1
-var wind_angles = 0
-var in_wind = 0
-var tar_angle
-var dir = 1
+
 @onready var cur_angle = $AnimatedSprite2D.rotation_degrees
 
 func _physics_process(delta : float):
@@ -37,7 +38,7 @@ func _physics_process(delta : float):
 			$AnimatedSprite2D.play("walk")
 	
 	if not is_on_floor():
-			if coyote_count < coyote_time:
+			if coyote_count < coyote_frames:
 				coyote_count += 1
 			else:
 				was_on_floor = false
@@ -55,7 +56,7 @@ func _physics_process(delta : float):
 			$AnimatedSprite2D.flip_h = true
 		if is_on_floor():
 			jumps = 1
-			fly_jumps = 1
+			fly_count = 0
 		if (not (Input.is_action_pressed("right") or 
 		Input.is_action_pressed("left"))) or abs(velocity.x) > walk_v:
 			velocity.x *= ground_f
@@ -79,28 +80,26 @@ func _physics_process(delta : float):
 			$AnimatedSprite2D.play("walk")
 		else:
 			if in_wind > 0:
-				print(wind_angles)
-				velocity += Vector2(0, wind_a).rotated(wind_angles)
+				velocity += Vector2(0, wind_a).rotated(deg_to_rad(wind_angles))
+				if wind_angles == 0:
+					fly_count = floor(fly_frames/2)
 			if velocity.y > 0:
-				velocity.y *= air_f
+				velocity.y *= v_air_f
+			velocity.x *= 0.97
 			if Input.is_action_pressed("right"):
 				acceleration.x += glide_a
 				$AnimatedSprite2D.flip_h = false
 			if Input.is_action_pressed("left"):
 				acceleration.x -= glide_a
 				$AnimatedSprite2D.flip_h = true
-			if Input.is_action_pressed("jump") and fly_count < fly_time and \
-					fly_jumps > 0:
+			if Input.is_action_pressed("jump") and fly_count < fly_frames:
 				velocity.y = -fly_v
 				fly_count += 1
 				if $AnimatedSprite2D.animation != "flap":
-					print("aaa")
 					$AnimatedSprite2D.play("flap")
-			if (Input.is_action_just_released("jump") and fly_count > 3) or \
-					fly_count == fly_time:
-				fly_count = 0
-				fly_jumps -= 1
+			if Input.is_action_just_released("jump") or fly_count == fly_frames:
 				$AnimatedSprite2D.play("flight")
+				
 				
 			if (abs(acceleration.x) > max_glide_v):
 				if (acceleration.x > 0):

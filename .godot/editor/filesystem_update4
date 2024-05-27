@@ -4,3 +4,4 @@ res://Atkinson_Hyperlegible.tres
 res://Scenes/Player.tscn
 res://Scenes/Wind.tscn
 res://Scenes/StartMenu.tscn
+res://Scripts/Player.gd

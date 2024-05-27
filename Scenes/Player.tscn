@@ -42,7 +42,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"flap",
-"speed": 10.0
+"speed": 11.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -77,14 +77,10 @@ walk_v = 420.0
 ground_f = 0.7
 jump_a = -900.0
 gravity_a = 50.0
-air_f = 0.9
-glide_a = 20.0
+glide_a = 25.0
 max_glide_v = 500.0
-fly_v = 500.0
+fly_v = 700.0
 wind_a = -60.0
-direction_change_s = 0.4
-coyote_time = 10.0
-fly_time = 30.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_6cjex")
