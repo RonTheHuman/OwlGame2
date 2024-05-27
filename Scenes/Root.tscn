@@ -140,7 +140,39 @@ position = Vector2(-848, -912)
 scale = Vector2(2, 2)
 
 [node name="Wind5" parent="WindContainer" instance=ExtResource("1")]
-position = Vector2(464, -320)
+position = Vector2(448, -320)
+scale = Vector2(2, 2)
+
+[node name="Wind9" parent="WindContainer" instance=ExtResource("1")]
+position = Vector2(448, -448)
+scale = Vector2(2, 2)
+
+[node name="Wind10" parent="WindContainer" instance=ExtResource("1")]
+position = Vector2(448, -576)
+scale = Vector2(2, 2)
+
+[node name="Wind11" parent="WindContainer" instance=ExtResource("1")]
+position = Vector2(448, -704)
+scale = Vector2(2, 2)
+
+[node name="Wind12" parent="WindContainer" instance=ExtResource("1")]
+position = Vector2(2496, -480)
+rotation = 0.785397
+scale = Vector2(2, 2)
+
+[node name="Wind14" parent="WindContainer" instance=ExtResource("1")]
+position = Vector2(2624, -640)
+rotation = 1.57079
+scale = Vector2(2, 2)
+
+[node name="Wind15" parent="WindContainer" instance=ExtResource("1")]
+position = Vector2(2752, -640)
+rotation = 1.57079
+scale = Vector2(2, 2)
+
+[node name="Wind16" parent="WindContainer" instance=ExtResource("1")]
+position = Vector2(2880, -640)
+rotation = 1.57079
 scale = Vector2(2, 2)
 
 [node name="Wind8" parent="WindContainer" instance=ExtResource("1")]

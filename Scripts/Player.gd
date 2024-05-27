@@ -7,6 +7,7 @@ extends CharacterBody2D
 @export var gravity_a : float
 
 @export var v_air_f : float
+@export var h_air_f : float
 @export var glide_a : float
 @export var max_glide_v : float
 
@@ -82,17 +83,18 @@ func _physics_process(delta : float):
 			if in_wind > 0:
 				velocity += Vector2(0, wind_a).rotated(deg_to_rad(wind_angles))
 				if wind_angles == 0:
-					fly_count = floor(fly_frames/2)
+					fly_count = min(fly_count, fly_frames/2)
 			if velocity.y > 0:
 				velocity.y *= v_air_f
-			velocity.x *= 0.97
+			velocity.x *= h_air_f
 			if Input.is_action_pressed("right"):
 				acceleration.x += glide_a
 				$AnimatedSprite2D.flip_h = false
 			if Input.is_action_pressed("left"):
 				acceleration.x -= glide_a
 				$AnimatedSprite2D.flip_h = true
-			if Input.is_action_pressed("jump") and fly_count < fly_frames:
+			if Input.is_action_pressed("jump") and fly_count < fly_frames \
+					and not in_wind:
 				velocity.y = -fly_v
 				fly_count += 1
 				if $AnimatedSprite2D.animation != "flap":
