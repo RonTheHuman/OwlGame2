@@ -1,4 +1,8 @@
+CollisionShape2D
+Area2D
+GPUParticles2D
+PointLight2D
+AnimatedSprite2D
 Node
 TileMap
-AnimatedSprite2D
 AnimationPlayer

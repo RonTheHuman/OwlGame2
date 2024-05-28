@@ -1,0 +1,80 @@
+[gd_scene load_steps=12 format=3 uid="uid://cqdbh0biexa87"]
+
+[ext_resource type="Texture2D" uid="uid://8neltjsl635d" path="res://tileset.png" id="1_nsm3b"]
+[ext_resource type="Script" path="res://Scripts/Firefly.gd" id="1_r17ik"]
+[ext_resource type="Texture2D" uid="uid://cqje81405pkvn" path="res://firefly.png" id="2_2yme0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sj26w"]
+atlas = ExtResource("1_nsm3b")
+region = Rect2(448, 128, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t6v0k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sj26w")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jgmbw"]
+radius = 20.0
+
+[sub_resource type="Gradient" id="Gradient_3xdk1"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.753623)
+colors = PackedColorArray(1, 1, 0.52549, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lewmf"]
+gradient = SubResource("Gradient_3xdk1")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Curve" id="Curve_gtj0p"]
+_data = [Vector2(0.158088, 1), 0.0, 0.0, 0, 0, Vector2(0.459559, 0.823263), 0.0, 0.0, 0, 0, Vector2(0.852941, 0.165408), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ui2ld"]
+curve = SubResource("Curve_gtj0p")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6f8cs"]
+particle_flag_disable_z = true
+angle_min = -182.4
+angle_max = 374.4
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_min = 406.68
+initial_velocity_max = 406.68
+gravity = Vector3(0, 0, 0)
+alpha_curve = SubResource("CurveTexture_ui2ld")
+
+[node name="Firefly" type="Area2D"]
+z_index = 1
+collision_layer = 0
+script = ExtResource("1_r17ik")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_t6v0k")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_jgmbw")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, 7)
+texture = SubResource("GradientTexture2D_lewmf")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 1
+process_material = SubResource("ParticleProcessMaterial_6f8cs")
+texture = ExtResource("2_2yme0")
+lifetime = 0.3
+one_shot = true
+explosiveness = 0.5
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="finished" from="GPUParticles2D" to="." method="_on_gpu_particles_2d_finished"]

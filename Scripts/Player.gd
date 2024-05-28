@@ -26,9 +26,12 @@ var was_on_floor = false
 var coyote_count = 0
 var fly_count = 0
 
+var small_fireflies = 0
+var big_fireflies = 0
+
 @onready var cur_angle = $AnimatedSprite2D.rotation_degrees
 
-func _physics_process(delta : float):
+func _physics_process(_delta : float):
 	var acceleration = Vector2.ZERO
 	
 	if Input.is_action_just_pressed("glide"):
@@ -115,12 +118,21 @@ func _physics_process(delta : float):
 	cur_angle = $AnimatedSprite2D.rotation_degrees
 
 
-func _on_Wind_entered_wind(angles):
+func _on_wind_entered_wind(angles):
 	wind_angles = angles
 	in_wind += 1
 	print(in_wind)
 
 
-func _on_Wind_body_exited(body):
+func _on_wind_body_exited(_body):
 	in_wind -= 1
 	print(in_wind)
+
+func _on_firefly_body_entered(_body, is_big):
+	if not is_big:
+		small_fireflies += 1
+		print("small fireflies: ", small_fireflies)
+	else:
+		big_fireflies += 1
+		print("big_fireflies: ", big_fireflies)
+

@@ -1,8 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://443mqq28b7c1"]
+[gd_scene load_steps=15 format=3 uid="uid://443mqq28b7c1"]
 
 [ext_resource type="PackedScene" uid="uid://dp2llicdmrp31" path="res://Scenes/Wind.tscn" id="1"]
 [ext_resource type="Script" path="res://Scripts/Root.gd" id="2"]
+[ext_resource type="PackedScene" uid="uid://cqdbh0biexa87" path="res://Scenes/Firefly.tscn" id="3_xqvsu"]
 [ext_resource type="PackedScene" uid="uid://ve2uk4fxg10p" path="res://Scenes/Player.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://dx5jy1tacix2j" path="res://Scenes/BigFirefly.tscn" id="4_tqg5g"]
 [ext_resource type="Texture2D" uid="uid://8neltjsl635d" path="res://tileset.png" id="4_wdk8e"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_85jc6"]
@@ -115,7 +117,7 @@ script = ExtResource("2")
 [node name="Polygon2D" type="Polygon2D" parent="."]
 position = Vector2(-1537, 291)
 rotation = -0.00230837
-color = Color(0.32549, 0.588235, 0.411765, 1)
+color = Color(0.3355, 0.61, 0.427, 1)
 polygon = PackedVector2Array(-1565.2, -3379.62, 5654.71, -3334.96, 5668.64, -269.915, -1558.34, -286.598)
 metadata/_edit_lock_ = true
 
@@ -186,6 +188,23 @@ scale = Vector2(2, 2)
 [node name="Wind7" parent="WindContainer" instance=ExtResource("1")]
 position = Vector2(320, -1216)
 scale = Vector2(2, 2)
+
+[node name="FireflyContainer" type="Node" parent="."]
+
+[node name="Firefly4" parent="FireflyContainer" instance=ExtResource("3_xqvsu")]
+position = Vector2(788, -303)
+
+[node name="Firefly3" parent="FireflyContainer" instance=ExtResource("3_xqvsu")]
+position = Vector2(726, -283)
+
+[node name="Firefly2" parent="FireflyContainer" instance=ExtResource("3_xqvsu")]
+position = Vector2(863, -282)
+
+[node name="Firefly5" parent="FireflyContainer" instance=ExtResource("4_tqg5g")]
+position = Vector2(1058, -384)
+
+[node name="Firefly" parent="FireflyContainer" instance=ExtResource("3_xqvsu")]
+position = Vector2(673, -226)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_u1lqd")

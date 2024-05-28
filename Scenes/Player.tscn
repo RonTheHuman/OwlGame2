@@ -90,7 +90,7 @@ fly_frames = 30.0
 sprite_frames = SubResource("SpriteFrames_6cjex")
 animation = &"flap"
 autoplay = "walk"
-frame_progress = 0.717589
+frame_progress = 0.11633
 
 [node name="StandingCollision2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)

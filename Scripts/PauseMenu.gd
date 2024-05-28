@@ -5,7 +5,7 @@ func _ready():
 	pass
 
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("pause"):
 		_on_ResumeButton_pressed()
 
