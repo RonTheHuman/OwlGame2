@@ -5,10 +5,4 @@ res://Scenes/Player.tscn
 res://Scenes/Wind.tscn
 res://Scenes/StartMenu.tscn
 res://Scenes/Firefly.tscn
-res://Scenes/Firefly.gd
-res://Scripts/Player.gd
-res://Scripts/Wind.gd
-res://Scripts/PauseMenu.gd
-res://Scripts/Root.gd
 res://Scenes/BigFirefly.tscn
-res://Scripts/Firefly.gd
