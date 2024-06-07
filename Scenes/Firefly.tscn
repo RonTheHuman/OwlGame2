@@ -1,8 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://cqdbh0biexa87"]
+[gd_scene load_steps=13 format=3 uid="uid://cqdbh0biexa87"]
 
 [ext_resource type="Texture2D" uid="uid://8neltjsl635d" path="res://tileset.png" id="1_nsm3b"]
 [ext_resource type="Script" path="res://Scripts/Firefly.gd" id="1_r17ik"]
-[ext_resource type="Texture2D" uid="uid://cqje81405pkvn" path="res://firefly.png" id="2_2yme0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sj26w"]
 atlas = ExtResource("1_nsm3b")
@@ -36,7 +35,7 @@ fill_from = Vector2(0.5, 0.5)
 _data = [Vector2(0.158088, 1), 0.0, 0.0, 0, 0, Vector2(0.459559, 0.823263), 0.0, 0.0, 0, 0, Vector2(0.852941, 0.165408), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_ui2ld"]
+[sub_resource type="CurveTexture" id="CurveTexture_f6lwr"]
 curve = SubResource("Curve_gtj0p")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6f8cs"]
@@ -45,10 +44,21 @@ angle_min = -182.4
 angle_max = 374.4
 direction = Vector3(0, 0, 0)
 spread = 180.0
-initial_velocity_min = 406.68
-initial_velocity_max = 406.68
+initial_velocity_min = 315.78
+initial_velocity_max = 362.45
+angular_velocity_max = 518.4
 gravity = Vector3(0, 0, 0)
-alpha_curve = SubResource("CurveTexture_ui2ld")
+alpha_curve = SubResource("CurveTexture_f6lwr")
+
+[sub_resource type="Gradient" id="Gradient_lekgc"]
+colors = PackedColorArray(0.812465, 0.71516, 0, 1, 0.989333, 1, 0.36, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_d75b0"]
+gradient = SubResource("Gradient_lekgc")
+width = 10
+height = 10
+fill = 1
+fill_from = Vector2(0.491453, 0.491453)
 
 [node name="Firefly" type="Area2D"]
 z_index = 1
@@ -56,6 +66,7 @@ collision_layer = 0
 script = ExtResource("1_r17ik")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = 1.57079
 sprite_frames = SubResource("SpriteFrames_t6v0k")
 autoplay = "default"
 
@@ -64,15 +75,15 @@ visible = false
 shape = SubResource("CircleShape2D_jgmbw")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(0, 7)
+position = Vector2(-9, 0)
 texture = SubResource("GradientTexture2D_lewmf")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 emitting = false
-amount = 1
+amount = 11
 process_material = SubResource("ParticleProcessMaterial_6f8cs")
-texture = ExtResource("2_2yme0")
-lifetime = 0.3
+texture = SubResource("GradientTexture2D_d75b0")
+lifetime = 0.2
 one_shot = true
 explosiveness = 0.5
 

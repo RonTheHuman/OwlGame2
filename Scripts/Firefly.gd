@@ -5,6 +5,14 @@ extends Area2D
 @export var is_big = 0
 
 var count = 0
+var collected = false
+var home_pos
+
+var ret_dir
+var ret_speed = 20
+var ret_frames = 15
+var ret_count = 0
+var alpha = 1
 
 
 func _ready():
@@ -12,20 +20,32 @@ func _ready():
 	body_entered.connect(Callable(get_node("../../Player"), \
 				"_on_firefly_body_entered").bind(is_big))
 	count = rng.randf_range(0, 2*PI)
+	home_pos = get_node("../../FireflyHome").global_position
+	print(home_pos)
 
 func _physics_process(_delta):
-	count += wobble_speed
-	translate(Vector2(0, wobble_size*cos(count)*scale.y))
-	if count > 2*PI:
-		count = 0
+	if not collected:
+		count += wobble_speed
+		translate(Vector2(0, wobble_size*cos(count)*scale.y))
+		if count > 2*PI:
+			count = 0
+	else:
+		if ret_count < ret_frames:
+			ret_count += 1
+			if (home_pos-position).dot(ret_dir) >= 0:
+				translate(ret_dir*ret_speed)
+			alpha -= 1/float(ret_frames)
+			$AnimatedSprite2D.set_modulate(Color(1, 1, 1, alpha))
+			$PointLight2D.energy = alpha
+		else:
+			queue_free()
 
 func _on_body_entered(_body):
+	collected = true
 	$GPUParticles2D.emitting = true
-	$AnimatedSprite2D.visible = false
-	$PointLight2D.visible = false
-
-func _on_gpu_particles_2d_finished():
-	queue_free()
+	ret_dir = (home_pos - position).normalized()
+	look_at(home_pos)
+	
 
 
 
