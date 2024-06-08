@@ -1,7 +1,9 @@
+PointLight2D
+DirectionalLight2D
+Node2D
 CollisionShape2D
 Area2D
 GPUParticles2D
-PointLight2D
 AnimatedSprite2D
 Node
 TileMap

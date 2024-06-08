@@ -7,13 +7,13 @@
 atlas = ExtResource("1")
 region = Rect2(320, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xtwk5"]
-atlas = ExtResource("1")
-region = Rect2(384, 0, 128, 64)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_gdbxi"]
 atlas = ExtResource("1")
 region = Rect2(512, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xtwk5"]
+atlas = ExtResource("1")
+region = Rect2(384, 0, 128, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x281s"]
 atlas = ExtResource("1")
@@ -35,10 +35,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xtwk5")
+"texture": SubResource("AtlasTexture_gdbxi")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gdbxi")
+"texture": SubResource("AtlasTexture_xtwk5")
 }],
 "loop": true,
 "name": &"flap",
@@ -75,7 +75,7 @@ z_index = 2
 script = ExtResource("2")
 walk_v = 420.0
 ground_f = 0.7
-jump_a = -900.0
+jump_a = -1000.0
 gravity_a = 50.0
 v_air_f = 0.9
 h_air_f = 0.97
@@ -88,9 +88,8 @@ fly_frames = 30.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_6cjex")
-animation = &"flap"
+animation = &"walk"
 autoplay = "walk"
-frame_progress = 0.11633
 
 [node name="StandingCollision2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)

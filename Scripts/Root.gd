@@ -12,4 +12,7 @@ func _process(_delta):
 		get_tree().paused = true
 
 func _physics_process(_delta):
-	$Camera2D.translate($Player.position - $Camera2D.position)
+	var to_translate = $Player.position
+	if to_translate.y > -256:
+		to_translate.y = -256
+	$Camera2D.translate(to_translate - $Camera2D.position)
