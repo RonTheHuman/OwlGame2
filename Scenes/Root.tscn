@@ -204,7 +204,7 @@ texture_filter = 1
 texture_repeat = 3
 position = Vector2(-1536, 256)
 rotation = -0.00230837
-color = Color(0.3355, 0.61, 0.427, 1)
+color = Color(0.271903, 0.511462, 0.352514, 1)
 polygon = PackedVector2Array(-6114.43, -12385.1, 13453.4, -12276, 12944.7, 154.882, -5854.65, -160.515)
 metadata/_edit_lock_ = true
 

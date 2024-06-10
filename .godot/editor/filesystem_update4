@@ -7,3 +7,6 @@ res://Scenes/StartMenu.tscn
 res://Scenes/Firefly.tscn
 res://Scenes/BigFirefly.tscn
 res://Scripts/Root.gd
+res://Scenes/PauseMenu.tscn
+res://bluishback.tres
+res://Scenes/DialogueBox.tscn

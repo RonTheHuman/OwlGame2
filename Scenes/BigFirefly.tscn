@@ -23,7 +23,7 @@ radius = 20.0
 
 [sub_resource type="Gradient" id="Gradient_3xdk1"]
 interpolation_mode = 2
-offsets = PackedFloat32Array(0, 0.753623)
+offsets = PackedFloat32Array(0, 0.681159)
 colors = PackedColorArray(0.84, 0.65184, 0.3024, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_lewmf"]
@@ -78,9 +78,9 @@ visible = false
 shape = SubResource("CircleShape2D_jgmbw")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(-7.5, -1.43051e-06)
+position = Vector2(-9, -2.72848e-12)
 rotation = 1.57079
-scale = Vector2(0.780001, 0.919999)
+scale = Vector2(1.04953, 1.0264)
 energy = 2.0
 texture = SubResource("GradientTexture2D_lewmf")
 
