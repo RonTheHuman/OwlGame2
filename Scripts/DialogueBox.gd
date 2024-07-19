@@ -1,6 +1,8 @@
-extends Control
+extends CanvasLayer
 
-var text = Dialogue.text
+signal dialogue_over
+
+var text
 var cur_row = 0
 var visible_chars = 0
 @export var portraits : Dictionary
@@ -10,21 +12,30 @@ var visible_chars = 0
 @onready var NameLabel = $PanelContainer/HBoxContainer/CharContainer/NameLabel
 
 func _ready():
-	show_line(text[cur_row][0], text[cur_row][1])
+	if text == null:
+		print("no text given")
+		queue_free()
+	else:
+		show_line(text[cur_row][0], text[cur_row][1])
+	connect("dialogue_over", Callable(get_node("../Player"), \
+								 "_on_dia_trig_dialogue_over"))
 
 func _physics_process(_delta):
 	if DialogueLabel.visible_ratio < 1:
 		visible_chars += text_speed
 		DialogueLabel.visible_characters = floor(visible_chars)
-		if Input.is_action_just_pressed("jump"):
+		if Input.is_action_just_pressed("jump") or \
+				Input.is_key_pressed(KEY_F2):
 			print("skipped")
 			DialogueLabel.visible_ratio = 1
 	else:
-		if Input.is_action_just_pressed("jump"):
+		if Input.is_action_just_pressed("jump") or \
+				Input.is_key_pressed(KEY_F2):
 			cur_row += 1
 			if text[cur_row][0] != "_end":
 				show_line(text[cur_row][0], text[cur_row][1])
 			else:
+				dialogue_over.emit()
 				queue_free()
 
 func show_line(name, line):

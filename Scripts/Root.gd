@@ -1,11 +1,5 @@
 extends Node2D
 
-
-func _ready():
-	var test = load("res://owlhead.png")
-	print(test.get_rid())
-
-
 func _process(_delta):
 	if Input.is_action_just_pressed("pause"):
 		#get_tree().quit()

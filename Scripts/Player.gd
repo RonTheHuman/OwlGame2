@@ -17,6 +17,7 @@ extends CharacterBody2D
 @export var coyote_frames : float
 @export var fly_frames : float
 
+
 var gliding = false
 var jumps = 1
 var wind_angles = 0
@@ -26,6 +27,7 @@ var was_on_floor = false
 var coyote_count = 0
 var fly_count = 0
 
+var in_dialogue = false
 var small_fireflies = 0
 var big_fireflies = 0
 
@@ -33,13 +35,6 @@ var big_fireflies = 0
 
 func _physics_process(_delta : float):
 	var acceleration = Vector2.ZERO
-	
-	if Input.is_action_just_pressed("glide"):
-		gliding = not gliding
-		if gliding:
-			$AnimatedSprite2D.play("flight")
-		else:
-			$AnimatedSprite2D.play("walk")
 	
 	if not is_on_floor():
 			if coyote_count < coyote_frames:
@@ -50,6 +45,16 @@ func _physics_process(_delta : float):
 	else:
 		was_on_floor = true
 		coyote_count = 0
+	
+	if Input.is_action_just_pressed("glide"):
+		gliding = not gliding
+		if gliding:
+			$AnimatedSprite2D.play("flight")
+			$CrouchCollision2D.disabled = true
+			$StandingCollision2D.disabled = true
+			$FlightCollision2D.disabled = false
+		else:
+			$AnimatedSprite2D.play("walk")
 	
 	if not gliding:
 		if Input.is_action_pressed("right"):
@@ -73,11 +78,13 @@ func _physics_process(_delta : float):
 		if Input.is_action_just_pressed("down"):
 			$AnimatedSprite2D.play("crouch")
 			$StandingCollision2D.disabled = true
+			$FlightCollision2D.disabled = true
 			$CrouchCollision2D.disabled = false
 		elif Input.is_action_just_released("down"):
 			$AnimatedSprite2D.play("walk")
 			$StandingCollision2D.disabled = false
 			$CrouchCollision2D.disabled = true
+			$FlightCollision2D.disabled = true
 	else:
 		if is_on_floor():
 			gliding = false
@@ -111,7 +118,9 @@ func _physics_process(_delta : float):
 					acceleration.x = max_glide_v
 				else:
 					acceleration.x  = -max_glide_v
-			
+	if in_dialogue:
+		acceleration = Vector2(0, gravity_a)
+		velocity.x = 0
 	
 	velocity += acceleration
 	move_and_slide()
@@ -122,7 +131,6 @@ func _on_wind_entered_wind(angles):
 	wind_angles = angles
 	in_wind += 1
 	print(in_wind)
-
 
 func _on_wind_body_exited(_body):
 	in_wind -= 1
@@ -136,3 +144,9 @@ func _on_firefly_body_entered(_body, is_big):
 		big_fireflies += 1
 		print("big_fireflies: ", big_fireflies)
 
+func _on_dia_trig_body_entered(_body):
+	in_dialogue = true
+	
+func _on_dia_trig_dialogue_over():
+	print("aaa")
+	in_dialogue = false

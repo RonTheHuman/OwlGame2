@@ -1,10 +1,12 @@
-[gd_scene load_steps=24 format=3 uid="uid://443mqq28b7c1"]
+[gd_scene load_steps=26 format=3 uid="uid://443mqq28b7c1"]
 
 [ext_resource type="Script" path="res://Scripts/Root.gd" id="2"]
 [ext_resource type="PackedScene" uid="uid://cqdbh0biexa87" path="res://Scenes/Firefly.tscn" id="3_xqvsu"]
 [ext_resource type="PackedScene" uid="uid://ve2uk4fxg10p" path="res://Scenes/Player.tscn" id="4"]
 [ext_resource type="PackedScene" uid="uid://dx5jy1tacix2j" path="res://Scenes/BigFirefly.tscn" id="4_tqg5g"]
 [ext_resource type="Texture2D" uid="uid://8neltjsl635d" path="res://tileset.png" id="4_wdk8e"]
+[ext_resource type="PackedScene" uid="uid://bsontujen4t8k" path="res://Scenes/DialogueTrigger.tscn" id="6_0tlga"]
+[ext_resource type="PackedScene" uid="uid://dp2llicdmrp31" path="res://Scenes/Wind.tscn" id="7_lfvvc"]
 
 [sub_resource type="Gradient" id="Gradient_pxglg"]
 interpolation_mode = 2
@@ -229,6 +231,9 @@ position_smoothing_speed = 3.0
 
 [node name="WindContainer" type="Node" parent="."]
 
+[node name="Wind" parent="WindContainer" instance=ExtResource("7_lfvvc")]
+position = Vector2(-128, -32)
+
 [node name="FireflyContainer" type="Node" parent="."]
 
 [node name="Firefly4" parent="FireflyContainer" instance=ExtResource("3_xqvsu")]
@@ -275,6 +280,9 @@ rotation = -1.57079
 position = Vector2(288, -192)
 rotation = -1.57079
 
+[node name="Firefly12" parent="FireflyContainer" instance=ExtResource("3_xqvsu")]
+position = Vector2(0, -96)
+
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_u1lqd")
 format = 2
@@ -284,3 +292,15 @@ metadata/_edit_lock_ = true
 [node name="Player" parent="." instance=ExtResource("4")]
 position = Vector2(-272, -32)
 collision_mask = 3
+
+[node name="DiaContainer" type="Node" parent="."]
+
+[node name="DialogueTrigger2" parent="DiaContainer" instance=ExtResource("6_0tlga")]
+position = Vector2(672, -64)
+scale = Vector2(7.0816, 1.4)
+dia_name = "TestDia"
+
+[node name="DialogueTrigger" parent="DiaContainer" instance=ExtResource("6_0tlga")]
+position = Vector2(176, -96)
+scale = Vector2(6.04, 1)
+dia_name = "D1"
