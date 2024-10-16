@@ -98,10 +98,10 @@ func _physics_process(_delta : float):
 				velocity.y *= v_air_f
 			velocity.x *= h_air_f
 			if Input.is_action_pressed("right"):
-				acceleration.x += glide_a
+				acceleration.x = glide_a
 				$AnimatedSprite2D.flip_h = false
 			if Input.is_action_pressed("left"):
-				acceleration.x -= glide_a
+				acceleration.x = -glide_a
 				$AnimatedSprite2D.flip_h = true
 			if Input.is_action_pressed("jump") and fly_count < fly_frames \
 					and not in_wind:
@@ -113,11 +113,11 @@ func _physics_process(_delta : float):
 				$AnimatedSprite2D.play("flight")
 				
 				
-			if (abs(acceleration.x) > max_glide_v):
-				if (acceleration.x > 0):
-					acceleration.x = max_glide_v
+			if (abs(velocity.x) > max_glide_v):
+				if (velocity.x > 0):
+					velocity.x = max_glide_v
 				else:
-					acceleration.x  = -max_glide_v
+					velocity.x  = -max_glide_v
 	if in_dialogue:
 		acceleration = Vector2(0, gravity_a)
 		velocity.x = 0

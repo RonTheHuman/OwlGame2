@@ -15,8 +15,8 @@ func _on_body_entered(body):
 		dia_box = dia_box.instantiate()
 		match(dia_name):
 			"D1":
-				dia_box.text = Dialogue.D1
+				dia_box.text = get_parent().D1
 			"TestDia":
-				dia_box.text = Dialogue.D2
+				dia_box.text = get_parent().D2
 		get_node("../..").add_child(dia_box)
 	
