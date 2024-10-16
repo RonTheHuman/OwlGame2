@@ -104,7 +104,7 @@ func _physics_process(_delta : float):
 				acceleration.x = -glide_a
 				$AnimatedSprite2D.flip_h = true
 			if Input.is_action_pressed("jump") and fly_count < fly_frames \
-					and not in_wind:
+					and velocity.y + 1 > -fly_v:
 				velocity.y = -fly_v
 				fly_count += 1
 				if $AnimatedSprite2D.animation != "flap":

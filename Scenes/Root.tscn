@@ -235,6 +235,20 @@ position_smoothing_speed = 3.0
 [node name="Wind" parent="WindContainer" instance=ExtResource("7_lfvvc")]
 position = Vector2(-128, -32)
 
+[node name="Wind2" parent="WindContainer" instance=ExtResource("7_lfvvc")]
+position = Vector2(1280, -896)
+rotation = 1.57079
+scale = Vector2(4.4, 4.4)
+
+[node name="Wind4" parent="WindContainer" instance=ExtResource("7_lfvvc")]
+position = Vector2(1120, -160)
+rotation = 1.57079
+scale = Vector2(4.4, 4.4)
+
+[node name="Wind3" parent="WindContainer" instance=ExtResource("7_lfvvc")]
+position = Vector2(704, -1184)
+scale = Vector2(4.4, 3.72)
+
 [node name="FireflyContainer" type="Node" parent="."]
 
 [node name="Firefly4" parent="FireflyContainer" instance=ExtResource("3_xqvsu")]
@@ -291,16 +305,11 @@ layer_0/tile_data = PackedInt32Array(-327651, 1, 0, -327650, 1, 0, -327649, 1, 0
 metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("4")]
-position = Vector2(2800, -2336)
+position = Vector2(880, -704)
 collision_mask = 3
 
 [node name="DiaContainer" type="Node" parent="."]
 script = ExtResource("7_onjah")
-
-[node name="DialogueTrigger2" parent="DiaContainer" instance=ExtResource("6_0tlga")]
-position = Vector2(672, -64)
-scale = Vector2(7.0816, 1.4)
-dia_name = "TestDia"
 
 [node name="DialogueTrigger" parent="DiaContainer" instance=ExtResource("6_0tlga")]
 position = Vector2(176, -96)
