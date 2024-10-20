@@ -1,6 +1,8 @@
 res://default_env.tres
-res://Scenes/Root.tscn
+res://Scenes/FireflyCounter.tscn
 res://Atkinson_Hyperlegible.tres
+res://Scenes/FireflyCounter.gd
+res://Scenes/Root.tscn
 res://Scenes/Player.tscn
 res://Scenes/StartMenu.tscn
 res://Scenes/Firefly.tscn
@@ -9,6 +11,4 @@ res://Scenes/Wind.tscn
 res://Scenes/DialogueBox.tscn
 res://Scenes/DialogueTrigger.tscn
 res://Scenes/PauseMenu.tscn
-res://Scripts/DialogueTrigger.gd
-res://Scenes/Dialogues/Dialogue.gd
 res://Scripts/Player.gd

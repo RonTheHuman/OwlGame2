@@ -138,11 +138,9 @@ func _on_wind_body_exited(_body):
 
 func _on_firefly_body_entered(_body, is_big):
 	if not is_big:
-		small_fireflies += 1
-		print("small fireflies: ", small_fireflies)
+		get_parent().get_node("FireflyCounter").add_f()
 	else:
-		big_fireflies += 1
-		print("big_fireflies: ", big_fireflies)
+		get_parent().get_node("FireflyCounter").add_bf()
 
 func _on_dia_trig_body_entered(_body):
 	in_dialogue = true

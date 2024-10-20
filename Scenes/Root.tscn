@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://443mqq28b7c1"]
+[gd_scene load_steps=28 format=3 uid="uid://443mqq28b7c1"]
 
 [ext_resource type="Script" path="res://Scripts/Root.gd" id="2"]
 [ext_resource type="PackedScene" uid="uid://cqdbh0biexa87" path="res://Scenes/Firefly.tscn" id="3_xqvsu"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bsontujen4t8k" path="res://Scenes/DialogueTrigger.tscn" id="6_0tlga"]
 [ext_resource type="PackedScene" uid="uid://dp2llicdmrp31" path="res://Scenes/Wind.tscn" id="7_lfvvc"]
 [ext_resource type="Script" path="res://Scenes/Dialogues/Dialogue.gd" id="7_onjah"]
+[ext_resource type="PackedScene" uid="uid://b4alsnfrpi8am" path="res://Scenes/FireflyCounter.tscn" id="9_7adjv"]
 
 [sub_resource type="Gradient" id="Gradient_pxglg"]
 interpolation_mode = 2
@@ -315,3 +316,5 @@ script = ExtResource("7_onjah")
 position = Vector2(176, -96)
 scale = Vector2(6.04, 1)
 dia_name = "D1"
+
+[node name="FireflyCounter" parent="." instance=ExtResource("9_7adjv")]
