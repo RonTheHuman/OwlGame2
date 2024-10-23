@@ -326,9 +326,7 @@ dia_name = "D1"
 [node name="Checkpoint" parent="CheckpointContainer" instance=ExtResource("9_hp7kg")]
 z_index = 1
 position = Vector2(684, -595)
-scale = Vector2(2, 2)
 
 [node name="Checkpoint2" parent="CheckpointContainer" instance=ExtResource("9_hp7kg")]
 z_index = 1
 position = Vector2(938, -660)
-scale = Vector2(2, 2)
