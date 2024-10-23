@@ -14,6 +14,7 @@ var ret_speed = 20
 var ret_frames = 15
 var ret_count = 0
 var alpha = 1
+var startup = 0
 
 
 func _ready():
@@ -23,9 +24,16 @@ func _ready():
 	count = rng.randf_range(0, 2*PI)
 	home_pos = get_node("../../FireflyHome").position
 	center_pos = position
+	startup = 0
+	$CollisionShape2D.disabled = true
 	#print(home_pos)
 
 func _physics_process(_delta):
+	if startup <= 2:
+		startup += 1
+	else:
+		$CollisionShape2D.disabled = false
+		
 	if not collected:
 		count += wobble_speed
 		translate(Vector2(0, wobble_size*cos(count)*scale.y))

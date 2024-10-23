@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bkpekxfj5wmi5"]
+[gd_scene load_steps=6 format=3 uid="uid://bkpekxfj5wmi5"]
 
 [ext_resource type="Texture2D" uid="uid://8neltjsl635d" path="res://tileset.png" id="1_8hhrc"]
+[ext_resource type="Script" path="res://Scripts/Checkpoint.gd" id="1_35jau"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_au4sh"]
-size = Vector2(64, 42)
+size = Vector2(29, 6.5)
 
 [sub_resource type="Gradient" id="Gradient_2mnwf"]
 interpolation_mode = 2
@@ -16,20 +17,24 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 
 [node name="Checkpoint" type="Area2D"]
+script = ExtResource("1_35jau")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_8hhrc")
 region_enabled = true
-region_rect = Rect2(576, 128, 64, 64)
+region_rect = Rect2(512, 128, 64, 64)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(0, 11)
+position = Vector2(0.5, 7.25)
 shape = SubResource("RectangleShape2D_au4sh")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(0, -16)
 scale = Vector2(1.23438, 1.29688)
+enabled = false
 energy = 0.45
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_1r7gt")
+metadata/_edit_lock_ = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

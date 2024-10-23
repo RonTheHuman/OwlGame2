@@ -1,3 +1,4 @@
+Node
 CollisionShape2D
 Sprite2D
 Area2D
@@ -7,7 +8,6 @@ Panel
 Label
 HBoxContainer
 CanvasLayer
-Node
 Dialogue
 VBoxContainer
 Container
