@@ -7,6 +7,7 @@ extends Area2D
 var count = 0
 var collected = false
 var home_pos
+var center_pos
 
 var ret_dir
 var ret_speed = 20
@@ -20,8 +21,8 @@ func _ready():
 	body_entered.connect(Callable(get_node("../../Player"), \
 				"_on_firefly_body_entered").bind(is_big))
 	count = rng.randf_range(0, 2*PI)
-	home_pos = get_node("../../FireflyHome").global_position
-	print(home_pos)
+	home_pos = get_node("../../FireflyHome").position
+	#print(home_pos)
 
 func _physics_process(_delta):
 	if not collected:
@@ -41,10 +42,13 @@ func _physics_process(_delta):
 			queue_free()
 
 func _on_body_entered(_body):
+	look_at(home_pos)
+	rotate(PI/2)
 	collected = true
 	$GPUParticles2D.emitting = true
 	ret_dir = (home_pos - position).normalized()
-	look_at(home_pos)
+	print("looking")
+	
 	
 
 

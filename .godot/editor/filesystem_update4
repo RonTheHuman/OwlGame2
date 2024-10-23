@@ -12,3 +12,4 @@ res://Scenes/Wind.tscn
 res://Scenes/DialogueBox.tscn
 res://Scenes/DialogueTrigger.tscn
 res://Scenes/PauseMenu.tscn
+res://Scripts/Firefly.gd
