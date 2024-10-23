@@ -66,7 +66,6 @@ collision_layer = 0
 script = ExtResource("1_r17ik")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-rotation = 1.57079
 sprite_frames = SubResource("SpriteFrames_t6v0k")
 autoplay = "default"
 
@@ -75,7 +74,7 @@ visible = false
 shape = SubResource("CircleShape2D_jgmbw")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(-11, -2.38419e-07)
+position = Vector2(-9.53674e-07, 10)
 scale = Vector2(1.23438, 1.29688)
 texture = SubResource("GradientTexture2D_lewmf")
 

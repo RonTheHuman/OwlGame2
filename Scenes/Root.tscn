@@ -254,7 +254,6 @@ scale = Vector2(4.4, 3.72)
 
 [node name="Firefly4" parent="FireflyContainer" instance=ExtResource("3_xqvsu")]
 position = Vector2(96, -416)
-rotation = -1.57079
 
 [node name="Firefly3" parent="FireflyContainer" instance=ExtResource("3_xqvsu")]
 position = Vector2(-96, -512)
@@ -277,16 +276,19 @@ position = Vector2(368, -720)
 rotation = -1.57079
 
 [node name="Firefly11" parent="FireflyContainer" instance=ExtResource("3_xqvsu")]
-position = Vector2(688, -608)
+position = Vector2(704, -640)
 rotation = -1.57079
+scale = Vector2(2.5, 2.5)
+is_big = 1
 
 [node name="Firefly2" parent="FireflyContainer" instance=ExtResource("3_xqvsu")]
 position = Vector2(448, -352)
 rotation = -1.57079
 
 [node name="Firefly5" parent="FireflyContainer" instance=ExtResource("4_tqg5g")]
-position = Vector2(1664, -752)
+position = Vector2(1664, -768)
 rotation = -1.57079
+scale = Vector2(2.5, 2.5)
 
 [node name="Firefly" parent="FireflyContainer" instance=ExtResource("3_xqvsu")]
 position = Vector2(160, -416)
