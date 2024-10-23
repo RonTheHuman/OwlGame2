@@ -13,3 +13,5 @@ res://Scenes/DialogueBox.tscn
 res://Scenes/DialogueTrigger.tscn
 res://Scenes/PauseMenu.tscn
 res://Scripts/Firefly.gd
+res://Scenes/FireflyCounter.gd
+res://Scenes/Checkpoint.tscn

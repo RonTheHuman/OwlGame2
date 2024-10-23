@@ -1,3 +1,6 @@
+CollisionShape2D
+Sprite2D
+Area2D
 MarginContainer
 PanelContainer
 Panel
@@ -6,10 +9,6 @@ HBoxContainer
 CanvasLayer
 Node
 Dialogue
-CollisionShape2D
-Area2D
 VBoxContainer
 Container
 TextureRect
-RichTextLabel
-PointLight2D

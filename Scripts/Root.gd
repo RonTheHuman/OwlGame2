@@ -23,10 +23,15 @@ func save_game():
 	print("saving")
 	var f_loc_arr = []
 	for f in $FireflyContainer.get_children():
-		f_loc_arr.append([f.position.x, f.position.y, f.is_big])
+		f_loc_arr.append([f.center_pos.x, f.center_pos.y, f.is_big])
 	print(f_loc_arr)
 	var save_file = FileAccess.open("Scenes/SaveFile.txt", FileAccess.WRITE)
-	save_file.store_string(JSON.stringify(f_loc_arr))
+	save_file.store_string(JSON.stringify(
+		{
+		"f_count": $FireflyCounter.fireflies,
+		"bf_count": $FireflyCounter.big_fireflies,
+		"f_loc_arr": f_loc_arr
+		}))
 	save_file.close()
 
 
@@ -36,7 +41,8 @@ func load_game():
 		f.queue_free()
 	var f_loc_arr = []
 	var save_file = FileAccess.open("Scenes/SaveFile.txt", FileAccess.READ)
-	f_loc_arr = JSON.parse_string(save_file.get_as_text())
+	var save_data = JSON.parse_string(save_file.get_as_text())
+	f_loc_arr = save_data["f_loc_arr"]
 	print(f_loc_arr)
 	for f_loc in f_loc_arr:
 		var firefly = firefly_packed.instantiate()
@@ -45,3 +51,6 @@ func load_game():
 		if firefly.is_big:
 			firefly.scale = Vector2(2.5, 2.5)
 		$FireflyContainer.add_child(firefly)
+	$FireflyCounter.set_f(save_data["f_count"])
+	$FireflyCounter.set_bf(save_data["bf_count"])
+	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://443mqq28b7c1"]
+[gd_scene load_steps=28 format=3 uid="uid://443mqq28b7c1"]
 
 [ext_resource type="Script" path="res://Scripts/Root.gd" id="2"]
 [ext_resource type="PackedScene" uid="uid://cqdbh0biexa87" path="res://Scenes/Firefly.tscn" id="3_xqvsu"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dp2llicdmrp31" path="res://Scenes/Wind.tscn" id="7_lfvvc"]
 [ext_resource type="Script" path="res://Scenes/Dialogues/Dialogue.gd" id="7_onjah"]
 [ext_resource type="PackedScene" uid="uid://b4alsnfrpi8am" path="res://Scenes/FireflyCounter.tscn" id="9_7adjv"]
+[ext_resource type="PackedScene" uid="uid://bkpekxfj5wmi5" path="res://Scenes/Checkpoint.tscn" id="9_hp7kg"]
 
 [sub_resource type="Gradient" id="Gradient_pxglg"]
 interpolation_mode = 2
@@ -207,7 +208,7 @@ texture_filter = 1
 texture_repeat = 3
 position = Vector2(-1536, 256)
 rotation = -0.00230837
-color = Color(0.271903, 0.511462, 0.352514, 1)
+color = Color(0.245622, 0.468646, 0.320881, 1)
 polygon = PackedVector2Array(-6114.43, -12385.1, 13453.4, -12276, 12944.7, 154.882, -5854.65, -160.515)
 metadata/_edit_lock_ = true
 
@@ -264,7 +265,7 @@ position = Vector2(96, -608)
 position = Vector2(160, -608)
 
 [node name="Firefly8" parent="FireflyContainer" instance=ExtResource("3_xqvsu")]
-position = Vector2(448, -720)
+position = Vector2(960, -816)
 
 [node name="Firefly10" parent="FireflyContainer" instance=ExtResource("3_xqvsu")]
 position = Vector2(368, -720)
@@ -279,7 +280,7 @@ position = Vector2(2640, -912)
 position = Vector2(2752, -896)
 
 [node name="Firefly11" parent="FireflyContainer" instance=ExtResource("3_xqvsu")]
-position = Vector2(704, -640)
+position = Vector2(1590, -970)
 scale = Vector2(2.5, 2.5)
 is_big = 1
 
@@ -307,7 +308,7 @@ layer_0/tile_data = PackedInt32Array(-327651, 1, 0, -327650, 1, 0, -327649, 1, 0
 metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("4")]
-position = Vector2(880, -704)
+position = Vector2(832, -672)
 collision_mask = 3
 
 [node name="DiaContainer" type="Node" parent="."]
@@ -319,3 +320,8 @@ scale = Vector2(6.04, 1)
 dia_name = "D1"
 
 [node name="FireflyCounter" parent="." instance=ExtResource("9_7adjv")]
+
+[node name="Checkpoint" parent="." instance=ExtResource("9_hp7kg")]
+z_index = 1
+position = Vector2(696, -596)
+scale = Vector2(2, 2)

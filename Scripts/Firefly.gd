@@ -22,6 +22,7 @@ func _ready():
 				"_on_firefly_body_entered").bind(is_big))
 	count = rng.randf_range(0, 2*PI)
 	home_pos = get_node("../../FireflyHome").position
+	center_pos = position
 	#print(home_pos)
 
 func _physics_process(_delta):
