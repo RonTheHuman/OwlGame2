@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bkpekxfj5wmi5"]
+[gd_scene load_steps=8 format=3 uid="uid://bkpekxfj5wmi5"]
 
 [ext_resource type="Texture2D" uid="uid://8neltjsl635d" path="res://tileset.png" id="1_8hhrc"]
 [ext_resource type="Script" path="res://Scripts/Checkpoint.gd" id="1_35jau"]
+[ext_resource type="Texture2D" uid="uid://dctqow0e8nb1d" path="res://icon.png" id="3_jnvgl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_au4sh"]
 size = Vector2(29, 6.5)
@@ -45,10 +46,10 @@ metadata/_edit_lock_ = true
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 position = Vector2(0, -10)
 emitting = false
-amount = 15
 lifetime = 0.6
 one_shot = true
 explosiveness = 1.0
+texture = ExtResource("3_jnvgl")
 direction = Vector2(0, -1)
 spread = 90.0
 gravity = Vector2(0, 1000)
