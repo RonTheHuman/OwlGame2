@@ -1,9 +1,9 @@
+MarginContainer
 Area2D
 CPUParticles2D
 Node
 CollisionShape2D
 Sprite2D
-MarginContainer
 PanelContainer
 Panel
 Label

@@ -26,10 +26,12 @@ offsets = PackedFloat32Array(0.319588, 1)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [node name="Checkpoint" type="Area2D"]
+z_index = 1
 scale = Vector2(2, 2)
 script = ExtResource("1_35jau")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -2)
 texture = ExtResource("1_8hhrc")
 region_enabled = true
 region_rect = Rect2(512, 128, 64, 64)

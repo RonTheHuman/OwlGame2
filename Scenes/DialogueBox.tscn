@@ -49,9 +49,13 @@ text_direction = 2
 [node name="CharContainer" type="VBoxContainer" parent="PanelContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="NameLabel" type="Label" parent="PanelContainer/HBoxContainer/CharContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/HBoxContainer/CharContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 25
+theme_override_constants/margin_top = 10
+
+[node name="NameLabel" type="Label" parent="PanelContainer/HBoxContainer/CharContainer/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
 text = "ינשוף:"
 horizontal_alignment = 1
 

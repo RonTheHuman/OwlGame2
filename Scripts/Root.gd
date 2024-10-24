@@ -1,6 +1,8 @@
 extends Node2D
 var firefly_packed = preload("res://Scenes/Firefly.tscn")
 var last_checkpoint
+var discovered_chpts = false
+var dia_box = preload("res://Scenes/DialogueBox.tscn")
 
 func _process(_delta):
 	if Input.is_action_just_pressed("pause"):
@@ -25,12 +27,21 @@ func save_game(checkpoint = null):
 	if last_checkpoint != null and last_checkpoint != checkpoint:
 		last_checkpoint.checkpoint_changed()
 	last_checkpoint = checkpoint
+	
+	if last_checkpoint != null and not discovered_chpts:
+			dia_box = dia_box.instantiate()
+			dia_box.text = $DiaContainer.dia_dict["checkpoint"]
+			add_child(dia_box)
+			$Player._on_dia_trig_body_entered(null)
+			discovered_chpts = true
+	
 	for f in $FireflyContainer.get_children():
 		f_loc_arr.append([f.center_pos.x, f.center_pos.y, f.is_big])
 	print(f_loc_arr)
 	var save_file = FileAccess.open("Scenes/SaveFile.txt", FileAccess.WRITE)
 	save_file.store_string(JSON.stringify(
 		{
+		"discovered_chpts": discovered_chpts,
 		"f_count": $FireflyCounter.fireflies,
 		"bf_count": $FireflyCounter.big_fireflies,
 		"player_pos": [$Player.position.x, $Player.position.y],
@@ -60,7 +71,9 @@ func load_game():
 		$FireflyContainer.add_child(firefly)
 	$FireflyCounter.set_f(save_data["f_count"])
 	$FireflyCounter.set_bf(save_data["bf_count"])
+	discovered_chpts = save_data["discovered_chpts"]
 	
 
 func _ready():
+	#load_game()
 	save_game()

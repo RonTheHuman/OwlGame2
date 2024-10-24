@@ -35,8 +35,6 @@ var big_fireflies = 0
 
 func _physics_process(_delta : float):
 	var acceleration = Vector2.ZERO
-	if $CrouchChecker.monitoring:
-		print($CrouchChecker.has_overlapping_bodies())
 	if not is_on_floor():
 			if coyote_count < coyote_frames:
 				coyote_count += 1
@@ -55,10 +53,16 @@ func _physics_process(_delta : float):
 			$StandingCollision2D.disabled = true
 			$FlightCollision2D.disabled = false
 		else:
-			$AnimatedSprite2D.play("walk")
-			$StandingCollision2D.disabled = false
-			$CrouchCollision2D.disabled = true
-			$FlightCollision2D.disabled = true
+			if $CrouchChecker.has_overlapping_bodies():
+				$AnimatedSprite2D.play("crouch")
+				$StandingCollision2D.disabled = true
+				$CrouchCollision2D.disabled = false
+				$FlightCollision2D.disabled = true
+			else:
+				$AnimatedSprite2D.play("walk")
+				$StandingCollision2D.disabled = false
+				$CrouchCollision2D.disabled = true
+				$FlightCollision2D.disabled = true
 	
 	if not gliding:
 		if Input.is_action_pressed("right"):
@@ -158,8 +162,8 @@ func _on_dia_trig_dialogue_over():
 
 
 func _on_crouch_checker_body_exited(_body):
-	if not Input.is_action_pressed("down"):
+	if not Input.is_action_pressed("down") and not gliding:
 		$AnimatedSprite2D.play("walk")
-		$StandingCollision2D.disabled = false
-		$CrouchCollision2D.disabled = true
-		$FlightCollision2D.disabled = true
+		$StandingCollision2D.set_deferred("disabled", false)
+		$CrouchCollision2D.set_deferred("disabled", true)
+		$FlightCollision2D.set_deferred("disabled", true)

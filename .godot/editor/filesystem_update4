@@ -15,3 +15,5 @@ res://Scripts/Root.gd
 res://Scenes/Dialogues/LoadDialogues.gd
 res://Scripts/DialogueTrigger.gd
 res://Scripts/Player.gd
+res://Scripts/DialogueBox.gd
+res://Scenes/Dialogues/checkpoint.txt

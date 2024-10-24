@@ -9,7 +9,7 @@ var visible_chars = 0
 @export var text_speed = 0.5
 @onready var DialogueLabel = $PanelContainer/HBoxContainer/DialogueLabel
 @onready var PortraitText = $PanelContainer/HBoxContainer/CharContainer/Portrait
-@onready var NameLabel = $PanelContainer/HBoxContainer/CharContainer/NameLabel
+@onready var NameLabel = $PanelContainer/HBoxContainer/CharContainer/MarginContainer/NameLabel
 
 func _ready():
 	if text == null:
