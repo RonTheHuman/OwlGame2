@@ -37,7 +37,7 @@ func save_game(checkpoint = null):
 	
 	for f in $FireflyContainer.get_children():
 		f_loc_arr.append([f.center_pos.x, f.center_pos.y, f.is_big])
-	print(f_loc_arr)
+	#print(f_loc_arr)
 	var save_file = FileAccess.open("Scenes/SaveFile.txt", FileAccess.WRITE)
 	save_file.store_string(JSON.stringify(
 		{
@@ -58,7 +58,7 @@ func load_game():
 	var save_file = FileAccess.open("Scenes/SaveFile.txt", FileAccess.READ)
 	var save_data = JSON.parse_string(save_file.get_as_text())
 	f_loc_arr = save_data["f_loc_arr"]
-	print(f_loc_arr)
+	#print(f_loc_arr)
 	
 	$Player.position = Vector2(save_data["player_pos"][0], save_data["player_pos"][1])
 	$Player.velocity = Vector2.ZERO

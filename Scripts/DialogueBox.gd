@@ -26,7 +26,7 @@ func _physics_process(_delta):
 		DialogueLabel.visible_characters = floor(visible_chars)
 		if Input.is_action_just_pressed("jump") or \
 				Input.is_key_pressed(KEY_F2):
-			print("skipped")
+			#print("skipped")
 			DialogueLabel.visible_ratio = 1
 	else:
 		if Input.is_action_just_pressed("jump") or \

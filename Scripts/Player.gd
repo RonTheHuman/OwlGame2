@@ -157,7 +157,6 @@ func _on_dia_trig_body_entered(_body):
 	in_dialogue = true
 	
 func _on_dia_trig_dialogue_over():
-	print("aaa")
 	in_dialogue = false
 
 
