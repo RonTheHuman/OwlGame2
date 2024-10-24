@@ -35,7 +35,8 @@ var big_fireflies = 0
 
 func _physics_process(_delta : float):
 	var acceleration = Vector2.ZERO
-	
+	if $CrouchChecker.monitoring:
+		print($CrouchChecker.has_overlapping_bodies())
 	if not is_on_floor():
 			if coyote_count < coyote_frames:
 				coyote_count += 1
@@ -55,6 +56,9 @@ func _physics_process(_delta : float):
 			$FlightCollision2D.disabled = false
 		else:
 			$AnimatedSprite2D.play("walk")
+			$StandingCollision2D.disabled = false
+			$CrouchCollision2D.disabled = true
+			$FlightCollision2D.disabled = true
 	
 	if not gliding:
 		if Input.is_action_pressed("right"):
@@ -80,7 +84,7 @@ func _physics_process(_delta : float):
 			$StandingCollision2D.disabled = true
 			$FlightCollision2D.disabled = true
 			$CrouchCollision2D.disabled = false
-		elif Input.is_action_just_released("down"):
+		elif Input.is_action_just_released("down") and not $CrouchChecker.has_overlapping_bodies():
 			$AnimatedSprite2D.play("walk")
 			$StandingCollision2D.disabled = false
 			$CrouchCollision2D.disabled = true
@@ -89,6 +93,9 @@ func _physics_process(_delta : float):
 		if is_on_floor():
 			gliding = false
 			$AnimatedSprite2D.play("walk")
+			$StandingCollision2D.disabled = false
+			$CrouchCollision2D.disabled = true
+			$FlightCollision2D.disabled = true
 		else:
 			if in_wind > 0:
 				velocity += Vector2(0, wind_a).rotated(deg_to_rad(wind_angles))
@@ -148,3 +155,11 @@ func _on_dia_trig_body_entered(_body):
 func _on_dia_trig_dialogue_over():
 	print("aaa")
 	in_dialogue = false
+
+
+func _on_crouch_checker_body_exited(_body):
+	if not Input.is_action_pressed("down"):
+		$AnimatedSprite2D.play("walk")
+		$StandingCollision2D.disabled = false
+		$CrouchCollision2D.disabled = true
+		$FlightCollision2D.disabled = true

@@ -12,3 +12,6 @@ res://Scenes/DialogueTrigger.tscn
 res://Scenes/PauseMenu.tscn
 res://Scenes/Checkpoint.tscn
 res://Scripts/Root.gd
+res://Scenes/Dialogues/LoadDialogues.gd
+res://Scripts/DialogueTrigger.gd
+res://Scripts/Player.gd

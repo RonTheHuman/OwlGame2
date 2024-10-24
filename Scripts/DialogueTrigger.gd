@@ -13,10 +13,6 @@ func _on_body_entered(body):
 		body_entered.disconnect(Callable(get_node("../../Player"), \
 			"_on_dia_trig_body_entered"))
 		dia_box = dia_box.instantiate()
-		match(dia_name):
-			"D1":
-				dia_box.text = get_parent().D1
-			"TestDia":
-				dia_box.text = get_parent().D2
+		dia_box.text = get_parent().dia_dict[dia_name]
 		get_node("../..").add_child(dia_box)
 	

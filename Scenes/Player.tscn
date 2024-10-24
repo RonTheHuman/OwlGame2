@@ -104,3 +104,13 @@ disabled = true
 position = Vector2(0, 15)
 shape = SubResource("10")
 disabled = true
+
+[node name="CrouchChecker" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="StandingCollision2D" type="CollisionShape2D" parent="CrouchChecker"]
+position = Vector2(0, 0.5)
+shape = SubResource("2")
+
+[connection signal="body_exited" from="CrouchChecker" to="." method="_on_crouch_checker_body_exited"]
