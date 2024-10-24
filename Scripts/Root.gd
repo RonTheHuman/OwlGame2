@@ -61,4 +61,6 @@ func load_game():
 	$FireflyCounter.set_f(save_data["f_count"])
 	$FireflyCounter.set_bf(save_data["bf_count"])
 	
-	
+
+func _ready():
+	save_game()
