@@ -4,14 +4,13 @@ var num = 0
 var dia_dict = {}
 
 func _ready():
-	var dia_text_file = FileAccess.open("Scenes/Dialogues/expo.txt", FileAccess.READ)
-	dia_dict["expo"] = JSON.parse_string(dia_text_file.get_as_text())
-	dia_text_file.close()
+	load_dialogue("expo")
+	load_dialogue("glide_t")
+	load_dialogue("checkpoint")
+	load_dialogue("barrier")
 
-	dia_text_file = FileAccess.open("Scenes/Dialogues/glide_t.txt", FileAccess.READ)
-	dia_dict["glide_t"] = JSON.parse_string(dia_text_file.get_as_text())
-	dia_text_file.close()
-	
-	dia_text_file = FileAccess.open("Scenes/Dialogues/checkpoint.txt", FileAccess.READ)
-	dia_dict["checkpoint"] = JSON.parse_string(dia_text_file.get_as_text())
+
+func load_dialogue(f_name):
+	var dia_text_file = FileAccess.open("Scenes/Dialogues/%s.txt"%f_name, FileAccess.READ)
+	dia_dict[f_name] = JSON.parse_string(dia_text_file.get_as_text())
 	dia_text_file.close()

@@ -1,8 +1,8 @@
-MarginContainer
+CollisionShape2D
 Area2D
+MarginContainer
 CPUParticles2D
 Node
-CollisionShape2D
 Sprite2D
 PanelContainer
 Panel

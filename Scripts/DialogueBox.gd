@@ -38,11 +38,11 @@ func _physics_process(_delta):
 				dialogue_over.emit()
 				queue_free()
 
-func show_line(name, line):
+func show_line(char_name, line):
 	DialogueLabel.visible_characters = 0;
 	visible_chars = 0
 	DialogueLabel.text = line
-	PortraitText.texture = portraits[name]
-	NameLabel.text = name
+	PortraitText.texture = portraits[char_name]
+	NameLabel.text = char_name
 	
 

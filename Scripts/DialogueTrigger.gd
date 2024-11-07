@@ -7,7 +7,7 @@ func _ready():
 	body_entered.connect(Callable(get_node("../../Player"), \
 		"_on_dia_trig_body_entered"))
 
-func _on_body_entered(body):
+func _on_body_entered(_body):
 	if not entered_once:
 		entered_once = true
 		body_entered.disconnect(Callable(get_node("../../Player"), \
@@ -15,4 +15,4 @@ func _on_body_entered(body):
 		dia_box = dia_box.instantiate()
 		dia_box.text = get_parent().dia_dict[dia_name]
 		get_node("../..").add_child(dia_box)
-	
+

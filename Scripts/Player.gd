@@ -28,8 +28,6 @@ var coyote_count = 0
 var fly_count = 0
 
 var in_dialogue = false
-var small_fireflies = 0
-var big_fireflies = 0
 
 @onready var cur_angle = $AnimatedSprite2D.rotation_degrees
 
@@ -131,6 +129,8 @@ func _physics_process(_delta : float):
 					velocity.x  = -max_glide_v
 	if in_dialogue:
 		acceleration = Vector2(0, gravity_a)
+		if velocity.y < 0:
+			velocity.y = 0
 		velocity.x = 0
 	
 	velocity += acceleration
@@ -157,6 +157,7 @@ func _on_dia_trig_body_entered(_body):
 	in_dialogue = true
 	
 func _on_dia_trig_dialogue_over():
+	print("out of dialogue")
 	in_dialogue = false
 
 
