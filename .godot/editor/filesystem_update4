@@ -1,6 +1,7 @@
 res://default_env.tres
 res://Scenes/Root.tscn
 res://Atkinson_Hyperlegible.tres
+res://Scenes/Dialogues/LoadDialogues.gd
 res://Scenes/FireflyCounter.tscn
 res://Scenes/StartMenu.tscn
 res://Scenes/Firefly.tscn
@@ -12,3 +13,4 @@ res://Scenes/BarrierDialogue.tscn
 res://Scenes/DialogueBox.tscn
 res://Scenes/PauseMenu.tscn
 res://Scenes/Checkpoint.tscn
+res://Scripts/DialogueTrigger.gd

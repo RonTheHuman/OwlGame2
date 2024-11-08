@@ -8,6 +8,8 @@ func _ready():
 	load_dialogue("glide_t")
 	load_dialogue("checkpoint")
 	load_dialogue("barrier")
+	load_dialogue("pun_1")
+	load_dialogue("pun_2")
 
 
 func load_dialogue(f_name):
