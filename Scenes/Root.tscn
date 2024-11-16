@@ -705,12 +705,12 @@ fireflies_needed = 2
 
 [node name="DialogueTrigger3" parent="DiaContainer" instance=ExtResource("6_0tlga")]
 position = Vector2(8544, -3840)
-scale = Vector2(0.981854, 0.981854)
+scale = Vector2(0.978802, 2.02185)
 dia_name = "pun_1"
 
 [node name="DialogueTrigger4" parent="DiaContainer" instance=ExtResource("6_0tlga")]
 position = Vector2(8864, -1984)
-scale = Vector2(0.969561, 0.969561)
+scale = Vector2(0.969561, 2.08956)
 dia_name = "pun_2 "
 
 [node name="FireflyCounter" parent="." instance=ExtResource("9_7adjv")]

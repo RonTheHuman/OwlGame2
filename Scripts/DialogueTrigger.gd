@@ -15,4 +15,5 @@ func _on_body_entered(_body):
 		dia_box = dia_box.instantiate()
 		dia_box.text = get_parent().dia_dict[dia_name]
 		get_node("../..").add_child(dia_box)
+		get_parent().get_parent().vis_dia_arr.append(dia_name)
 

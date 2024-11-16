@@ -3,6 +3,7 @@ var firefly_packed = preload("res://Scenes/Firefly.tscn")
 var last_checkpoint
 var discovered_chpts = false
 var dia_box = preload("res://Scenes/DialogueBox.tscn")
+var vis_dia_arr = []
 
 func _process(_delta):
 	if Input.is_action_just_pressed("pause"):
@@ -37,11 +38,13 @@ func save_game(checkpoint = null):
 	
 	for f in $FireflyContainer.get_children():
 		f_loc_arr.append([f.center_pos.x, f.center_pos.y, f.is_big])
+
 	#print(f_loc_arr)
 	var save_file = FileAccess.open("Scenes/SaveFile.txt", FileAccess.WRITE)
 	save_file.store_string(JSON.stringify(
 		{
 		"discovered_chpts": discovered_chpts,
+		"vis_dia_arr": vis_dia_arr,
 		"f_count": $FireflyCounter.fireflies,
 		"bf_count": $FireflyCounter.big_fireflies,
 		"player_pos": [$Player.position.x, $Player.position.y],
@@ -54,10 +57,10 @@ func load_game():
 	print("loading")
 	for f in $FireflyContainer.get_children():
 		f.queue_free()
-	var f_loc_arr = []
 	var save_file = FileAccess.open("Scenes/SaveFile.txt", FileAccess.READ)
 	var save_data = JSON.parse_string(save_file.get_as_text())
-	f_loc_arr = save_data["f_loc_arr"]
+	var f_loc_arr = save_data["f_loc_arr"]
+	vis_dia_arr = save_data["vis_dia_arr"]
 	#print(f_loc_arr)
 	
 	$Player.position = Vector2(save_data["player_pos"][0], save_data["player_pos"][1])
@@ -72,6 +75,10 @@ func load_game():
 	$FireflyCounter.set_f(save_data["f_count"])
 	$FireflyCounter.set_bf(save_data["bf_count"])
 	discovered_chpts = save_data["discovered_chpts"]
+	
+	for d in $DiaContainer.get_children():
+		if (d.dia_name in vis_dia_arr):
+			d.queue_free()
 	
 
 func _ready():
