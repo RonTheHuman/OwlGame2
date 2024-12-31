@@ -682,7 +682,7 @@ layer_1/tile_data = PackedInt32Array(-65464, 1, 65536, -65463, 1, 65536, -65462,
 metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("4")]
-position = Vector2(8368, -3808)
+position = Vector2(9008, -2256)
 collision_mask = 3
 
 [node name="DiaContainer" type="Node" parent="."]
@@ -711,7 +711,7 @@ dia_name = "pun_1"
 [node name="DialogueTrigger4" parent="DiaContainer" instance=ExtResource("6_0tlga")]
 position = Vector2(8864, -1984)
 scale = Vector2(0.969561, 2.08956)
-dia_name = "pun_2 "
+dia_name = "pun_2"
 
 [node name="FireflyCounter" parent="." instance=ExtResource("9_7adjv")]
 
