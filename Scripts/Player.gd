@@ -72,7 +72,8 @@ func _physics_process(_delta : float):
 		if is_on_floor():
 			jumps = 1
 			fly_count = 0
-			if Input.is_action_pressed("left") or Input.is_action_pressed("right"):
+			if (Input.is_action_pressed("left") or Input.is_action_pressed("right")) \
+												and $CrouchCollision2D.disabled:
 				$AnimatedSprite2D.play("walk")
 			elif abs(velocity.x) < 1 and $CrouchCollision2D.disabled:
 				$AnimatedSprite2D.play("stand")
@@ -100,10 +101,16 @@ func _physics_process(_delta : float):
 	else:
 		if is_on_floor():
 			gliding = false
-			$AnimatedSprite2D.play("stand")
-			$StandingCollision2D.disabled = false
-			$CrouchCollision2D.disabled = true
-			$FlightCollision2D.disabled = true
+			if not $CrouchChecker.has_overlapping_bodies():
+				$AnimatedSprite2D.play("stand")
+				$StandingCollision2D.disabled = false
+				$CrouchCollision2D.disabled = true
+				$FlightCollision2D.disabled = true
+			else:
+				$AnimatedSprite2D.play("crouch")
+				$StandingCollision2D.disabled = true
+				$CrouchCollision2D.disabled = false
+				$FlightCollision2D.disabled = true
 		else:
 			if in_wind > 0:
 				velocity += Vector2(0, wind_a).rotated(deg_to_rad(wind_angles))
