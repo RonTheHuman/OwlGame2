@@ -100,6 +100,7 @@ v_air_f = 0.9
 h_air_f = 0.97
 glide_a = 25.0
 max_glide_v = 700.0
+max_wind_glide_v = 1300.0
 fly_v = 700.0
 wind_a = -80.0
 coyote_frames = 10.0

@@ -10,6 +10,7 @@ extends CharacterBody2D
 @export var h_air_f : float
 @export var glide_a : float
 @export var max_glide_v : float
+@export var max_wind_glide_v : float
 
 @export var fly_v : float
 @export var wind_a : float
