@@ -18,6 +18,7 @@ extends CharacterBody2D
 @export var coyote_frames : float
 @export var fly_frames : float
 
+var mgv
 
 var gliding = false
 var jumps = 1
@@ -135,12 +136,15 @@ func _physics_process(_delta : float):
 			if Input.is_action_just_released("jump") or fly_count == fly_frames:
 				$AnimatedSprite2D.play("flight")
 				
-				
-			if (abs(velocity.x) > max_glide_v):
+			if in_wind > 0:
+				mgv = max_wind_glide_v
+			else:
+				mgv = max_glide_v
+			if (abs(velocity.x) > mgv):
 				if (velocity.x > 0):
-					velocity.x = max_glide_v
+					velocity.x = mgv
 				else:
-					velocity.x  = -max_glide_v
+					velocity.x  = -mgv
 	if in_dialogue:
 		acceleration = Vector2(0, gravity_a)
 		if velocity.y < 0:

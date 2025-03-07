@@ -288,10 +288,6 @@ position = Vector2(5264, -6592)
 rotation = 1.0472
 scale = Vector2(4, 4)
 
-[node name="Wind48" parent="WindContainer" instance=ExtResource("7_lfvvc")]
-position = Vector2(1904, -8096)
-scale = Vector2(4, 4)
-
 [node name="Wind18" parent="WindContainer" instance=ExtResource("7_lfvvc")]
 position = Vector2(3520, -3392)
 scale = Vector2(2, 2)
@@ -399,24 +395,39 @@ rotation = -1.57079
 scale = Vector2(2, 2)
 
 [node name="Wind54" parent="WindContainer" instance=ExtResource("7_lfvvc")]
-position = Vector2(5920, -8704)
+position = Vector2(6080, -8576)
 rotation = -1.57079
-scale = Vector2(8, 8)
+scale = Vector2(3, 3)
 
 [node name="Wind55" parent="WindContainer" instance=ExtResource("7_lfvvc")]
-position = Vector2(5408, -8704)
+position = Vector2(5760, -8768)
 rotation = -1.57079
-scale = Vector2(8, 8)
+scale = Vector2(3, 3)
+
+[node name="Wind58" parent="WindContainer" instance=ExtResource("7_lfvvc")]
+position = Vector2(5376, -8640)
+rotation = -1.57079
+scale = Vector2(3.68001, 3.71709)
 
 [node name="Wind56" parent="WindContainer" instance=ExtResource("7_lfvvc")]
-position = Vector2(4896, -8704)
+position = Vector2(4896, -8752)
+rotation = -1.57079
+scale = Vector2(6.4, 6.4)
+
+[node name="Wind57" parent="WindContainer" instance=ExtResource("7_lfvvc")]
+position = Vector2(4320, -8640)
 rotation = -1.57079
 scale = Vector2(8, 8)
 
-[node name="Wind57" parent="WindContainer" instance=ExtResource("7_lfvvc")]
-position = Vector2(4384, -8704)
+[node name="Wind59" parent="WindContainer" instance=ExtResource("7_lfvvc")]
+position = Vector2(3808, -8784)
 rotation = -1.57079
 scale = Vector2(8, 8)
+
+[node name="Wind60" parent="WindContainer" instance=ExtResource("7_lfvvc")]
+position = Vector2(3184, -8608)
+rotation = -1.57079
+scale = Vector2(11.24, 11.24)
 
 [node name="Wind38" parent="WindContainer" instance=ExtResource("7_lfvvc")]
 position = Vector2(1728, -3520)
@@ -762,6 +773,7 @@ metadata/_edit_lock_ = true
 [node name="Player" parent="." instance=ExtResource("4")]
 position = Vector2(6672, -8480)
 collision_mask = 3
+max_wind_glide_v = 2000.0
 
 [node name="DiaContainer" type="Node" parent="."]
 script = ExtResource("7_onjah")
