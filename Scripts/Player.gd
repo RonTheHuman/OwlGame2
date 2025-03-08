@@ -116,7 +116,7 @@ func _physics_process(_delta : float):
 		else:
 			if in_wind > 0:
 				velocity += Vector2(0, wind_a).rotated(deg_to_rad(wind_angles))
-				if wind_angles == 0:
+				if wind_angles == 0 or wind_angles == 360:
 					fly_count = min(fly_count, fly_frames/2)
 			if velocity.y > 0:
 				velocity.y *= v_air_f

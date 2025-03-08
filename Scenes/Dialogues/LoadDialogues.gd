@@ -10,6 +10,8 @@ func _ready():
 	load_dialogue("barrier")
 	load_dialogue("pun_1")
 	load_dialogue("pun_2")
+	load_dialogue("ex")
+	load_dialogue("mom")
 
 
 func load_dialogue(f_name):
