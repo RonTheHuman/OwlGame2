@@ -12,4 +12,3 @@ res://Scenes/BarrierDialogue.tscn
 res://Scenes/DialogueBox.tscn
 res://Scenes/PauseMenu.tscn
 res://Scenes/Checkpoint.tscn
-res://Scripts/Player.gd
