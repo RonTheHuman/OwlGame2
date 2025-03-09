@@ -1,14 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://bayvnntjpfq3d"]
+[gd_scene load_steps=6 format=3 uid="uid://bayvnntjpfq3d"]
 
 [ext_resource type="Texture2D" uid="uid://bd4kjvfrjaog7" path="res://owlhead.png" id="1_virkr"]
 [ext_resource type="Script" path="res://Scripts/DialogueBox.gd" id="1_wimnd"]
 [ext_resource type="Texture2D" uid="uid://cvka3i8uscro6" path="res://narrator.png" id="3_skc77"]
 [ext_resource type="Texture2D" uid="uid://b72bsxr43x8hp" path="res://Peanut.png" id="4_y5f3f"]
+[ext_resource type="Texture2D" uid="uid://dp303j4lo4obi" path="res://firefly_rot.png" id="5_x2hfj"]
 
 [node name="DialogueBox" type="CanvasLayer"]
 script = ExtResource("1_wimnd")
 portraits = {
 "???": null,
+"אמא של חגית": ExtResource("5_x2hfj"),
 "חגית": null,
 "ינשוף": ExtResource("1_virkr"),
 "מוח של ינשוף": ExtResource("4_y5f3f"),

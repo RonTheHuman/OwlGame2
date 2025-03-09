@@ -116,7 +116,8 @@ func _physics_process(_delta : float):
 		else:
 			if in_wind > 0:
 				velocity += Vector2(0, wind_a).rotated(deg_to_rad(wind_angles))
-				if wind_angles == 0 or wind_angles == 360:
+				print(fly_count)
+				if fposmod(wind_angles, 360) < 0.1:
 					fly_count = min(fly_count, fly_frames/2)
 			if velocity.y > 0:
 				velocity.y *= v_air_f
@@ -159,11 +160,9 @@ func _physics_process(_delta : float):
 func _on_wind_entered_wind(angles):
 	wind_angles = angles
 	in_wind += 1
-	print(in_wind)
 
 func _on_wind_body_exited(_body):
 	in_wind -= 1
-	print(in_wind)
 
 func _on_firefly_body_entered(_body, is_big):
 	if not is_big:

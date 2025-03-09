@@ -12,5 +12,8 @@ res://Scenes/BarrierDialogue.tscn
 res://Scenes/DialogueBox.tscn
 res://Scenes/PauseMenu.tscn
 res://Scenes/Checkpoint.tscn
-res://Scenes/Dialogues/LoadDialogues.gd
 res://Scripts/Player.gd
+res://Scenes/Dialogues/LoadDialogues.gd
+res://Scripts/Firefly.gd
+res://Scripts/Root.gd
+res://Scenes/MomFirefly.gd
