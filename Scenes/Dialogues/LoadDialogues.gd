@@ -13,6 +13,7 @@ func _ready():
 	load_dialogue("ex")
 	load_dialogue("mom")
 	load_dialogue("ending")
+	load_dialogue("ending_test")
 
 
 func load_dialogue(f_name):
